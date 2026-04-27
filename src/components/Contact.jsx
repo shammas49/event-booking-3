@@ -112,7 +112,7 @@ export default function Contact() {
           </a>
 
           <a
-            href="tel:+919876543210"
+            href="tel:+919048900526"
             style={{
               display: 'flex', alignItems: 'center', gap: '10px',
               padding: '16px 40px',
