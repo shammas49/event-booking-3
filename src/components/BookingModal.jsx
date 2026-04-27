@@ -69,7 +69,7 @@ export default function BookingModal({ event, onClose }) {
       return
     }
     const message = `Assalamu Alaikum MK Caters and Events! 🌙\n\nI would like to book your services. Here are my details:\n\n👤 Name: ${form.name}\n📞 Phone: ${form.phone}\n📍 Location: ${form.location}, ${form.district}\n📅 Event Date: ${form.date}\n\n🎉 Event Type: ${event?.name || 'General'}\n🍽️ Reception Style: ${RECEPTION_OPTIONS.find(r=>r.id===selectedReception)?.name || selectedReception}\n🍱 Menu Preferences: ${selectedMenus.join(', ')}\n👥 Expected Guests: ${selectedGuests}\n\n📝 Special Requests: ${form.notes || 'None'}\n\nKindly contact me with package details and pricing. Thank you!`
-    window.open(`https://wa.me/919876543210?text=${encodeURIComponent(message)}`, '_blank')
+    window.open(`https://wa.me/919048900526?text=${encodeURIComponent(message)}`, '_blank')
     setSuccess(true)
     setTimeout(() => onClose(), 3000)
   }
@@ -286,7 +286,7 @@ export default function BookingModal({ event, onClose }) {
                   <label style={labelStyle}>WhatsApp / Phone Number *</label>
                   <div style={{ position: 'relative' }}>
                     <Phone size={16} style={iconStyle} />
-                    <input type="tel" placeholder="e.g. +91 98765 43210" value={form.phone}
+                    <input type="tel" placeholder="e.g. +91 9048900526" value={form.phone}
                       onChange={e => { setForm(f => ({ ...f, phone: e.target.value })); setErrors(er => ({ ...er, phone: '' })) }}
                       style={inputStyle('phone')}
                       onFocus={e => e.target.style.boxShadow = '0 0 0 2px rgba(139,26,26,0.25)'}
