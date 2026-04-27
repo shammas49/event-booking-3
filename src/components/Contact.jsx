@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import { Phone, MessageCircle } from 'lucide-react'
 
-const WA_URL = `https://wa.me/919876543210?text=Hello+MK+Caters+and+Events!%0A%0AI+would+like+to+plan+my+dream+wedding+with+you.`
+const WA_URL = `https://wa.me/919048900526?text=Hello+MK+Caters+and+Events!%0A%0AI+would+like+to+plan+my+dream+wedding+with+you.`
 
 export default function Contact() {
   return (
