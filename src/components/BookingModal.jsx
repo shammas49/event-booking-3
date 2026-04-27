@@ -94,15 +94,15 @@ export default function BookingModal({ event, onClose }) {
   const inputStyle = (field) => ({
     width: '100%', padding: '11px 12px 11px 40px',
     fontFamily: "'Outfit', sans-serif", fontSize: 14,
-    background: '#FFFDF8', color: '#3B2314',
-    border: `1px solid ${errors[field] ? '#DC2626' : '#C8960C'}`,
+    background: '#FCFCFA', color: '#666666',
+    border: `1px solid ${errors[field] ? '#DC2626' : '#D4AF37'}`,
     borderRadius: 8, outline: 'none',
     transition: 'border 0.2s, box-shadow 0.2s',
   })
 
   const fieldWrap = { position: 'relative', marginBottom: 18 }
-  const iconStyle = { position: 'absolute', left: 12, top: '50%', transform: 'translateY(-50%)', color: '#C8960C', pointerEvents: 'none' }
-  const labelStyle = { fontFamily: "'Outfit', sans-serif", fontSize: 13, fontWeight: 600, color: '#3B2314', marginBottom: 6, display: 'block' }
+  const iconStyle = { position: 'absolute', left: 12, top: '50%', transform: 'translateY(-50%)', color: '#D4AF37', pointerEvents: 'none' }
+  const labelStyle = { fontFamily: "'Outfit', sans-serif", fontSize: 13, fontWeight: 600, color: '#666666', marginBottom: 6, display: 'block' }
   const errStyle = { fontFamily: "'Outfit', sans-serif", fontSize: 11, color: '#DC2626', marginTop: 4 }
 
   return (
@@ -129,7 +129,7 @@ export default function BookingModal({ event, onClose }) {
           style={{
             width: 'min(640px, 100%)',
             maxHeight: '90vh',
-            background: '#FAF6EF',
+            background: '#FFFFFF',
             borderRadius: 20,
             overflow: 'hidden',
             display: 'flex', flexDirection: 'column',
@@ -139,17 +139,17 @@ export default function BookingModal({ event, onClose }) {
           }}
         >
         {/* Kerala gold top border */}
-        <div style={{ height: 4, background: 'repeating-linear-gradient(90deg,#C8960C 0,#C8960C 8px,#8B1A1A 8px,#8B1A1A 16px,transparent 16px,transparent 24px)' }} />
+        <div style={{ height: 4, background: 'repeating-linear-gradient(90deg,#D4AF37 0,#D4AF37 8px,#2C2C2C 8px,#2C2C2C 16px,transparent 16px,transparent 24px)' }} />
 
         {/* Header */}
         <div style={{ padding: '20px 24px 0', flexShrink: 0 }}>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 8 }}>
             <div>
-              <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: 11, fontWeight: 700, letterSpacing: '0.2em', color: '#C8960C', textTransform: 'uppercase' }}>✦ MK Caters &amp; Events ✦</p>
-              <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 22, fontWeight: 700, color: '#8B1A1A', marginTop: 2 }}>Book Your Event</h2>
-              {event && <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: 13, color: '#3B2314', opacity: 0.7, marginTop: 2 }}>{event.icon} {event.name}</p>}
+              <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: 11, fontWeight: 700, letterSpacing: '0.2em', color: '#D4AF37', textTransform: 'uppercase' }}>✦ MK Caters &amp; Events ✦</p>
+              <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 22, fontWeight: 700, color: '#2C2C2C', marginTop: 2 }}>Book Your Event</h2>
+              {event && <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: 13, color: '#666666', opacity: 0.7, marginTop: 2 }}>{event.icon} {event.name}</p>}
             </div>
-            <button onClick={onClose} style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#8B1A1A', padding: 4 }} aria-label="Close modal">
+            <button onClick={onClose} style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#2C2C2C', padding: 4 }} aria-label="Close modal">
               <X size={24} />
             </button>
           </div>
@@ -158,17 +158,17 @@ export default function BookingModal({ event, onClose }) {
           <div style={{ marginBottom: 16 }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 6 }}>
               {STEP_LABELS.map((label, i) => (
-                <span key={label} style={{ fontFamily: "'Outfit', sans-serif", fontSize: 10, fontWeight: 600, letterSpacing: '0.08em', color: i + 1 <= step ? '#C8960C' : 'rgba(59,35,20,0.35)', textTransform: 'uppercase', transition: 'color 0.3s' }}>{label}</span>
+                <span key={label} style={{ fontFamily: "'Outfit', sans-serif", fontSize: 10, fontWeight: 600, letterSpacing: '0.08em', color: i + 1 <= step ? '#D4AF37' : 'rgba(59,35,20,0.35)', textTransform: 'uppercase', transition: 'color 0.3s' }}>{label}</span>
               ))}
             </div>
             <div style={{ height: 4, background: 'rgba(200,150,12,0.15)', borderRadius: 2, overflow: 'hidden' }}>
               <motion.div
                 animate={{ width: `${((step - 1) / 3) * 100 + 25}%` }}
                 transition={{ duration: 0.4, ease: 'easeInOut' }}
-                style={{ height: '100%', background: 'linear-gradient(90deg,#C8960C,#F0B429)', borderRadius: 2 }}
+                style={{ height: '100%', background: 'linear-gradient(90deg,#D4AF37,#F0B429)', borderRadius: 2 }}
               />
             </div>
-            <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: 11, color: '#3B2314', opacity: 0.5, marginTop: 4, textAlign: 'right' }}>Step {step} of 4</p>
+            <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: 11, color: '#666666', opacity: 0.5, marginTop: 4, textAlign: 'right' }}>Step {step} of 4</p>
           </div>
         </div>
 
@@ -178,28 +178,28 @@ export default function BookingModal({ event, onClose }) {
             {success ? (
               <motion.div key="success" initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} style={{ textAlign: 'center', padding: '40px 0' }}>
                 <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ type: 'spring', damping: 12, stiffness: 200 }}
-                  style={{ width: 72, height: 72, borderRadius: '50%', background: 'linear-gradient(135deg,#C8960C,#F0B429)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 20px' }}>
+                  style={{ width: 72, height: 72, borderRadius: '50%', background: 'linear-gradient(135deg,#D4AF37,#F0B429)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 20px' }}>
                   <Check size={36} color="#FFFFFF" strokeWidth={3} />
                 </motion.div>
-                <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: 22, fontWeight: 700, color: '#8B1A1A', marginBottom: 10 }}>Thank you, {form.name}! 🎉</h3>
-                <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: 14, color: '#3B2314', opacity: 0.75, lineHeight: 1.6 }}>Your booking details have been sent to MK Caters and Events via WhatsApp. We'll get back to you shortly!</p>
+                <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: 22, fontWeight: 700, color: '#2C2C2C', marginBottom: 10 }}>Thank you, {form.name}! 🎉</h3>
+                <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: 14, color: '#666666', opacity: 0.75, lineHeight: 1.6 }}>Your booking details have been sent to MK Caters and Events via WhatsApp. We'll get back to you shortly!</p>
               </motion.div>
             ) : step === 1 ? (
               <motion.div key="s1" custom={direction} variants={slideVariants} initial="enter" animate="center" exit="exit" transition={{ duration: 0.3 }}>
-                <p style={{ fontFamily: "'Playfair Display', serif", fontSize: 16, fontWeight: 700, color: '#8B1A1A', margin: '16px 0 14px' }}>Choose Your Reception Style</p>
+                <p style={{ fontFamily: "'Playfair Display', serif", fontSize: 16, fontWeight: 700, color: '#2C2C2C', margin: '16px 0 14px' }}>Choose Your Reception Style</p>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 12, paddingBottom: 4 }}>
                   {RECEPTION_OPTIONS.map(opt => (
                     <motion.div key={opt.id} whileHover={{ scale: 1.01 }} whileTap={{ scale: 0.99 }}
                       onClick={() => setSelectedReception(opt.id)}
                       style={{
-                        border: selectedReception === opt.id ? '2px solid #C8960C' : '2px solid #E5D5B0',
+                        border: selectedReception === opt.id ? '2px solid #D4AF37' : '2px solid #E5D5B0',
                         borderRadius: 12, padding: '14px 16px', cursor: 'pointer',
-                        background: selectedReception === opt.id ? 'rgba(200,150,12,0.08)' : '#FFFDF8',
+                        background: selectedReception === opt.id ? 'rgba(200,150,12,0.08)' : '#FCFCFA',
                         boxShadow: selectedReception === opt.id ? '0 0 16px rgba(200,150,12,0.3)' : 'none',
                         transition: 'all 0.25s', position: 'relative',
                       }}>
                       {selectedReception === opt.id && (
-                        <div style={{ position: 'absolute', top: 10, right: 10, width: 22, height: 22, borderRadius: '50%', background: '#C8960C', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                        <div style={{ position: 'absolute', top: 10, right: 10, width: 22, height: 22, borderRadius: '50%', background: '#D4AF37', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                           <Check size={13} color="#fff" strokeWidth={3} />
                         </div>
                       )}
@@ -207,10 +207,10 @@ export default function BookingModal({ event, onClose }) {
                         <span style={{ fontSize: 28 }}>{opt.icon}</span>
                         <div style={{ flex: 1 }}>
                           <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 4 }}>
-                            <span style={{ fontFamily: "'Playfair Display', serif", fontSize: 15, fontWeight: 700, color: '#8B1A1A' }}>{opt.name}</span>
-                            <span style={{ fontFamily: "'Outfit', sans-serif", fontSize: 10, fontWeight: 700, color: '#C8960C', background: 'rgba(200,150,12,0.12)', padding: '2px 8px', borderRadius: 20 }}>{opt.badge}</span>
+                            <span style={{ fontFamily: "'Playfair Display', serif", fontSize: 15, fontWeight: 700, color: '#2C2C2C' }}>{opt.name}</span>
+                            <span style={{ fontFamily: "'Outfit', sans-serif", fontSize: 10, fontWeight: 700, color: '#D4AF37', background: 'rgba(200,150,12,0.12)', padding: '2px 8px', borderRadius: 20 }}>{opt.badge}</span>
                           </div>
-                          <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: 12, color: '#3B2314', opacity: 0.7, lineHeight: 1.55 }}>{opt.desc}</p>
+                          <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: 12, color: '#666666', opacity: 0.7, lineHeight: 1.55 }}>{opt.desc}</p>
                         </div>
                       </div>
                     </motion.div>
@@ -219,7 +219,7 @@ export default function BookingModal({ event, onClose }) {
               </motion.div>
             ) : step === 2 ? (
               <motion.div key="s2" custom={direction} variants={slideVariants} initial="enter" animate="center" exit="exit" transition={{ duration: 0.3 }}>
-                <p style={{ fontFamily: "'Playfair Display', serif", fontSize: 16, fontWeight: 700, color: '#8B1A1A', margin: '16px 0 14px' }}>Select Your Menu Preferences</p>
+                <p style={{ fontFamily: "'Playfair Display', serif", fontSize: 16, fontWeight: 700, color: '#2C2C2C', margin: '16px 0 14px' }}>Select Your Menu Preferences</p>
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10, paddingBottom: 4 }}>
                   {(MENU_BY_RECEPTION[selectedReception] || []).map(item => {
                     const sel = selectedMenus.includes(item)
@@ -228,9 +228,9 @@ export default function BookingModal({ event, onClose }) {
                         style={{
                           fontFamily: "'Outfit', sans-serif", fontSize: 13, fontWeight: 600,
                           padding: '9px 16px', borderRadius: 40, cursor: 'pointer',
-                          background: sel ? '#C8960C' : '#FFFDF8',
-                          color: sel ? '#3B2314' : '#3B2314',
-                          border: `1.5px solid ${sel ? '#C8960C' : '#C8960C'}`,
+                          background: sel ? '#D4AF37' : '#FCFCFA',
+                          color: sel ? '#666666' : '#666666',
+                          border: `1.5px solid ${sel ? '#D4AF37' : '#D4AF37'}`,
                           transition: 'all 0.2s',
                           display: 'flex', alignItems: 'center', gap: 6,
                         }}>
@@ -243,16 +243,16 @@ export default function BookingModal({ event, onClose }) {
               </motion.div>
             ) : step === 3 ? (
               <motion.div key="s3" custom={direction} variants={slideVariants} initial="enter" animate="center" exit="exit" transition={{ duration: 0.3 }}>
-                <p style={{ fontFamily: "'Playfair Display', serif", fontSize: 16, fontWeight: 700, color: '#8B1A1A', margin: '16px 0 14px' }}>Approximate Number of Guests</p>
+                <p style={{ fontFamily: "'Playfair Display', serif", fontSize: 16, fontWeight: 700, color: '#2C2C2C', margin: '16px 0 14px' }}>Approximate Number of Guests</p>
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12, paddingBottom: 4 }}>
                   {GUEST_OPTIONS.map(g => (
                     <motion.button key={g} whileTap={{ scale: 0.96 }} onClick={() => setSelectedGuests(g)}
                       style={{
                         fontFamily: "'Outfit', sans-serif", fontSize: 15, fontWeight: 700,
                         padding: '14px 28px', borderRadius: 40, cursor: 'pointer',
-                        background: selectedGuests === g ? '#C8960C' : '#FFFDF8',
-                        color: selectedGuests === g ? '#3B2314' : '#3B2314',
-                        border: `2px solid ${selectedGuests === g ? '#C8960C' : '#E5D5B0'}`,
+                        background: selectedGuests === g ? '#D4AF37' : '#FCFCFA',
+                        color: selectedGuests === g ? '#666666' : '#666666',
+                        border: `2px solid ${selectedGuests === g ? '#D4AF37' : '#E5D5B0'}`,
                         boxShadow: selectedGuests === g ? '0 0 14px rgba(200,150,12,0.4)' : 'none',
                         transition: 'all 0.25s',
                       }}>
@@ -264,8 +264,8 @@ export default function BookingModal({ event, onClose }) {
             ) : (
               <motion.div key="s4" custom={direction} variants={slideVariants} initial="enter" animate="center" exit="exit" transition={{ duration: 0.3 }}
                 className={shake ? 'shake-form' : ''}>
-                <p style={{ fontFamily: "'Playfair Display', serif", fontSize: 16, fontWeight: 700, color: '#8B1A1A', margin: '16px 0 4px' }}>Your Contact Details</p>
-                <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: 12, color: '#3B2314', opacity: 0.6, marginBottom: 16 }}>So we can get back to you with the perfect package</p>
+                <p style={{ fontFamily: "'Playfair Display', serif", fontSize: 16, fontWeight: 700, color: '#2C2C2C', margin: '16px 0 4px' }}>Your Contact Details</p>
+                <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: 12, color: '#666666', opacity: 0.6, marginBottom: 16 }}>So we can get back to you with the perfect package</p>
 
                 {/* Name */}
                 <div style={fieldWrap}>
@@ -293,7 +293,7 @@ export default function BookingModal({ event, onClose }) {
                       onBlur={e => e.target.style.boxShadow = 'none'} />
                   </div>
                   {errors.phone && <p style={errStyle}>{errors.phone}</p>}
-                  <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: 11, color: '#3B2314', opacity: 0.5, marginTop: 3 }}>We'll send your booking confirmation to this number</p>
+                  <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: 11, color: '#666666', opacity: 0.5, marginTop: 3 }}>We'll send your booking confirmation to this number</p>
                 </div>
 
                 {/* Date */}
@@ -354,18 +354,18 @@ export default function BookingModal({ event, onClose }) {
           <div style={{ padding: '16px 24px 20px', borderTop: '1px solid rgba(200,150,12,0.15)', display: 'flex', gap: 12, flexShrink: 0 }}>
             {step > 1 && (
               <button onClick={goBack}
-                style={{ flex: 1, padding: '13px', fontFamily: "'Outfit', sans-serif", fontSize: 14, fontWeight: 600, background: 'transparent', border: '1.5px solid #C8960C', borderRadius: 10, color: '#8B1A1A', cursor: 'pointer', transition: 'all 0.2s' }}>
+                style={{ flex: 1, padding: '13px', fontFamily: "'Outfit', sans-serif", fontSize: 14, fontWeight: 600, background: 'transparent', border: '1.5px solid #D4AF37', borderRadius: 10, color: '#2C2C2C', cursor: 'pointer', transition: 'all 0.2s' }}>
                 ← Back
               </button>
             )}
             {step < 4 ? (
               <motion.button whileTap={{ scale: 0.97 }} onClick={goNext} disabled={!canNext()}
-                style={{ flex: 2, padding: '13px', fontFamily: "'Outfit', sans-serif", fontSize: 14, fontWeight: 700, background: canNext() ? 'linear-gradient(135deg,#C8960C,#F0B429)' : 'rgba(200,150,12,0.3)', border: 'none', borderRadius: 10, color: canNext() ? '#3B2314' : 'rgba(59,35,20,0.4)', cursor: canNext() ? 'pointer' : 'not-allowed', transition: 'all 0.25s' }}>
+                style={{ flex: 2, padding: '13px', fontFamily: "'Outfit', sans-serif", fontSize: 14, fontWeight: 700, background: canNext() ? 'linear-gradient(135deg,#D4AF37,#F0B429)' : 'rgba(200,150,12,0.3)', border: 'none', borderRadius: 10, color: canNext() ? '#666666' : 'rgba(59,35,20,0.4)', cursor: canNext() ? 'pointer' : 'not-allowed', transition: 'all 0.25s' }}>
                 Continue →
               </motion.button>
             ) : (
               <motion.button whileTap={{ scale: 0.97 }} onClick={handleSubmit}
-                style={{ flex: 2, padding: '13px', fontFamily: "'Outfit', sans-serif", fontSize: 14, fontWeight: 700, background: 'linear-gradient(135deg,#C8960C,#F0B429)', border: 'none', borderRadius: 10, color: '#3B2314', cursor: 'pointer', boxShadow: '0 4px 20px rgba(200,150,12,0.4)' }}>
+                style={{ flex: 2, padding: '13px', fontFamily: "'Outfit', sans-serif", fontSize: 14, fontWeight: 700, background: 'linear-gradient(135deg,#D4AF37,#F0B429)', border: 'none', borderRadius: 10, color: '#666666', cursor: 'pointer', boxShadow: '0 4px 20px rgba(200,150,12,0.4)' }}>
                 📲 Confirm &amp; Send via WhatsApp
               </motion.button>
             )}

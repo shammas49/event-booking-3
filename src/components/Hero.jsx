@@ -1,82 +1,111 @@
-import { useState } from 'react'
+import { useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
-import { Phone, ChevronDown, CalendarCheck } from 'lucide-react'
-
-const words = ["Creating", "Moments,", "Crafting", "Memories"]
+import { ChevronDown } from 'lucide-react'
 
 export default function Hero() {
-  const [videoFailed, setVideoFailed] = useState(false)
+  const canvasRef = useRef(null)
+  
+  useEffect(() => {
+    const canvas = canvasRef.current
+    if (!canvas) return
+    const ctx = canvas.getContext('2d')
+    
+    const frameCount = 80
+    const images = []
+    
+    // Load images
+    for (let i = 0; i < frameCount; i++) {
+      const img = new Image()
+      const index = i.toString().padStart(3, '0')
+      img.src = `/weding/Wedding_mandap_setup_202604231138_${index}.jpg`
+      images.push(img)
+    }
+    
+    let frame = 0
+    let animationFrameId
+    let lastTime = 0
+    const fps = 24
+    const interval = 1000 / fps
+    
+    const render = (time) => {
+      if (time - lastTime >= interval) {
+        if (images[frame] && images[frame].complete && images[frame].naturalWidth > 0) {
+          const img = images[frame]
+          const canvasRatio = canvas.width / canvas.height
+          const imgRatio = img.width / img.height
+          
+          let drawWidth, drawHeight, offsetX, offsetY
+          
+          if (canvasRatio > imgRatio) {
+            drawWidth = canvas.width
+            drawHeight = canvas.width / imgRatio
+            offsetX = 0
+            offsetY = (canvas.height - drawHeight) / 2
+          } else {
+            drawWidth = canvas.height * imgRatio
+            drawHeight = canvas.height
+            offsetX = (canvas.width - drawWidth) / 2
+            offsetY = 0
+          }
+          
+          ctx.clearRect(0, 0, canvas.width, canvas.height)
+          ctx.drawImage(img, offsetX, offsetY, drawWidth, drawHeight)
+        }
+        
+        frame = (frame + 1) % frameCount
+        lastTime = time
+      }
+      animationFrameId = requestAnimationFrame(render)
+    }
+    
+    const resizeCanvas = () => {
+      if (!canvas) return
+      canvas.width = window.innerWidth
+      canvas.height = window.innerHeight
+    }
+    
+    window.addEventListener('resize', resizeCanvas)
+    resizeCanvas()
+    
+    animationFrameId = requestAnimationFrame(render)
+    
+    return () => {
+      cancelAnimationFrame(animationFrameId)
+      window.removeEventListener('resize', resizeCanvas)
+    }
+  }, [])
 
   return (
     <section
       id="home"
       style={{
         position: 'relative',
-        minHeight: '100vh',
+        height: '100vh',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
         overflow: 'hidden',
+        backgroundColor: '#000'
       }}
     >
-      {/* ── Looping Video Background ── */}
-      {!videoFailed && (
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          poster="https://source.unsplash.com/1600x900/?kerala,wedding,reception"
-          onError={() => setVideoFailed(true)}
-          style={{
-            position: 'absolute',
-            inset: 0,
-            width: '100%',
-            height: '100%',
-            objectFit: 'cover',
-            zIndex: 0,
-            willChange: 'transform',
-            transform: 'translateZ(0)',
-          }}
-        >
-          <source
-            src="https://videos.pexels.com/video-files/3843442/3843442-uhd_2560_1440_25fps.mp4"
-            type="video/mp4"
-          />
-        </video>
-      )}
+      {/* ── Image Sequence Background ── */}
+      <canvas
+        ref={canvasRef}
+        style={{
+          position: 'absolute',
+          inset: 0,
+          width: '100%',
+          height: '100%',
+          zIndex: 0,
+        }}
+      />
 
-      {/* ── Ken Burns Fallback (only when video fails) ── */}
-      {videoFailed && (
-        <div
-          className="hero-fallback"
-          style={{
-            position: 'absolute',
-            inset: 0,
-            backgroundImage: `url(https://source.unsplash.com/1600x900/?kerala,wedding,reception)`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat',
-            zIndex: 0,
-          }}
-        />
-      )}
-
-      {/* ── Cinematic Dark Gradient Overlay ── */}
+      {/* ── Cinematic Dark/Warm Overlay ── */}
       <div style={{
         position: 'absolute',
         inset: 0,
-        background: 'linear-gradient(to top, rgba(59,35,20,0.97) 0%, rgba(139,26,26,0.55) 40%, rgba(0,0,0,0.35) 100%)',
+        background: 'linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.6) 100%)',
         zIndex: 1,
-      }} />
-
-      {/* ── Kerala Pattern Top Strip ── */}
-      <div style={{
-        position: 'absolute',
-        top: 0, left: 0, right: 0,
-        height: '3px',
-        background: 'repeating-linear-gradient(90deg, #C8960C 0px, #C8960C 10px, transparent 10px, transparent 20px)',
-        zIndex: 2,
       }} />
 
       {/* ── Hero Content ── */}
@@ -85,162 +114,138 @@ export default function Hero() {
         zIndex: 10,
         textAlign: 'center',
         padding: '0 20px',
-        maxWidth: '900px',
+        maxWidth: '1000px',
         width: '100%',
       }}>
 
-        {/* Gold label */}
-        <motion.div
-          initial={{ opacity: 0, y: -10 }}
+        {/* Main heading */}
+        <motion.h1
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.1, duration: 0.6 }}
+          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
           style={{
-            fontFamily: "'Outfit', sans-serif",
-            fontSize: '12px',
-            fontWeight: 600,
-            letterSpacing: '0.3em',
-            color: '#C8960C',
-            marginBottom: '20px',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            gap: '10px',
+            fontFamily: "'Playfair Display', serif",
+            fontSize: 'clamp(40px, 6vw, 72px)',
+            fontWeight: 400,
+            color: '#FFFFFF',
+            lineHeight: 1.2,
+            marginBottom: '24px',
+            textShadow: '0 4px 20px rgba(0,0,0,0.3)',
           }}
         >
-          <span>✦</span>
-          <span>KOTTAKKAL, MALAPPURAM</span>
-          <span>✦</span>
-        </motion.div>
-
-        {/* Main heading — staggered word reveal */}
-        <h1 style={{
-          fontFamily: "'Playfair Display', serif",
-          fontSize: 'clamp(36px, 7vw, 80px)',
-          fontWeight: 700,
-          color: '#FFFFFF',
-          lineHeight: 1.15,
-          marginBottom: '24px',
-        }}>
-          {words.map((word, i) => (
-            <motion.span
-              key={i}
-              style={{ display: 'inline-block', marginRight: '0.25em' }}
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 + i * 0.12, duration: 0.6, ease: 'easeOut' }}
-            >
-              {word}
-            </motion.span>
-          ))}
-        </h1>
+          Crafting Unforgettable<br />
+          <span style={{ fontStyle: 'italic', color: '#F3E5AB' }}>Wedding Experiences</span>
+        </motion.h1>
 
         {/* Subtext */}
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.85, duration: 0.6 }}
+          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.5 }}
           style={{
             fontFamily: "'Outfit', sans-serif",
-            fontSize: 'clamp(15px, 2.5vw, 20px)',
+            fontSize: 'clamp(14px, 2vw, 18px)',
             fontWeight: 300,
-            color: 'rgba(255,255,255,0.82)',
-            marginBottom: '40px',
-            letterSpacing: '0.02em',
+            color: 'rgba(255,255,255,0.9)',
+            marginBottom: '48px',
+            letterSpacing: '0.1em',
+            textTransform: 'uppercase',
           }}
         >
-          Premium Catering &amp; Full Event Management across Kerala
+          Luxury event design and catering tailored to your story
         </motion.p>
 
         {/* CTA Buttons */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.05, duration: 0.6 }}
-          style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}
+          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.8 }}
+          style={{ display: 'flex', gap: '20px', justifyContent: 'center', flexWrap: 'wrap' }}
         >
-          {/* Call Now */}
-          <a
-            href="tel:+919876543210"
-            id="hero-call-btn"
+          <button
+            onClick={() => document.querySelector('#services')?.scrollIntoView({ behavior: 'smooth' })}
             style={{
-              display: 'flex', alignItems: 'center', gap: '8px',
-              padding: '14px 28px',
-              border: '2px solid #FFFFFF',
-              borderRadius: '8px',
+              padding: '16px 36px',
+              background: '#D4AF37',
               color: '#FFFFFF',
               fontFamily: "'Outfit', sans-serif",
-              fontSize: '15px',
-              fontWeight: 600,
-              textDecoration: 'none',
-              letterSpacing: '0.05em',
-              transition: 'all 0.3s',
-              background: 'transparent',
+              fontSize: '13px',
+              fontWeight: 500,
+              letterSpacing: '0.15em',
+              textTransform: 'uppercase',
+              border: 'none',
+              borderRadius: '2px',
+              cursor: 'pointer',
+              transition: 'all 0.4s cubic-bezier(0.16, 1, 0.3, 1)',
+              boxShadow: '0 10px 30px rgba(212,175,55,0.2)',
             }}
             onMouseEnter={e => {
-              e.currentTarget.style.background = '#FFFFFF'
-              e.currentTarget.style.color = '#8B1A1A'
+              e.currentTarget.style.transform = 'translateY(-4px)'
+              e.currentTarget.style.boxShadow = '0 15px 40px rgba(212,175,55,0.3)'
+              e.currentTarget.style.background = '#C59F2D'
+            }}
+            onMouseLeave={e => {
+              e.currentTarget.style.transform = 'translateY(0)'
+              e.currentTarget.style.boxShadow = '0 10px 30px rgba(212,175,55,0.2)'
+              e.currentTarget.style.background = '#D4AF37'
+            }}
+          >
+            Explore Our Services
+          </button>
+
+          <button
+            onClick={() => document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })}
+            style={{
+              padding: '16px 36px',
+              background: 'transparent',
+              color: '#FFFFFF',
+              fontFamily: "'Outfit', sans-serif",
+              fontSize: '13px',
+              fontWeight: 500,
+              letterSpacing: '0.15em',
+              textTransform: 'uppercase',
+              border: '1px solid rgba(255,255,255,0.6)',
+              borderRadius: '2px',
+              cursor: 'pointer',
+              transition: 'all 0.4s cubic-bezier(0.16, 1, 0.3, 1)',
+            }}
+            onMouseEnter={e => {
+              e.currentTarget.style.background = 'rgba(255,255,255,0.1)'
+              e.currentTarget.style.borderColor = '#FFFFFF'
             }}
             onMouseLeave={e => {
               e.currentTarget.style.background = 'transparent'
-              e.currentTarget.style.color = '#FFFFFF'
+              e.currentTarget.style.borderColor = 'rgba(255,255,255,0.6)'
             }}
           >
-            <Phone size={18} />
-            Call Now
-          </a>
-
-          {/* Book Now → Scrolls to Services */}
-          <button
-            id="hero-book-btn"
-            onClick={() => document.querySelector('#services')?.scrollIntoView({ behavior: 'smooth' })}
-            className="pulse-wa"
-            style={{
-              display: 'flex', alignItems: 'center', gap: '8px',
-              padding: '14px 28px',
-              background: '#C8960C',
-              borderRadius: '8px',
-              color: '#3B2314',
-              fontFamily: "'Outfit', sans-serif",
-              fontSize: '15px',
-              fontWeight: 700,
-              letterSpacing: '0.05em',
-              border: '2px solid #C8960C',
-              transition: 'all 0.3s',
-              cursor: 'pointer',
-            }}
-            onMouseEnter={e => {
-              e.currentTarget.style.background = '#F0B429'
-              e.currentTarget.style.borderColor = '#F0B429'
-            }}
-            onMouseLeave={e => {
-              e.currentTarget.style.background = '#C8960C'
-              e.currentTarget.style.borderColor = '#C8960C'
-            }}
-          >
-            <CalendarCheck size={18} />
-            Book Now
+            Contact Us
           </button>
         </motion.div>
       </div>
 
       {/* Scroll indicator */}
       <motion.div
-        className="bounce-chevron"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.5 }}
+        transition={{ delay: 1.5, duration: 1 }}
         style={{
           position: 'absolute',
-          bottom: '32px',
+          bottom: '40px',
           left: '50%',
           transform: 'translateX(-50%)',
-          color: '#C8960C',
+          color: '#FFFFFF',
           cursor: 'pointer',
           zIndex: 10,
+          opacity: 0.6,
         }}
         onClick={() => document.querySelector('#services')?.scrollIntoView({ behavior: 'smooth' })}
       >
-        <ChevronDown size={36} strokeWidth={1.5} />
+        <motion.div
+          animate={{ y: [0, 8, 0] }}
+          transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+        >
+          <ChevronDown size={28} strokeWidth={1} />
+        </motion.div>
       </motion.div>
     </section>
   )

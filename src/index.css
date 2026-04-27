@@ -1,13 +1,13 @@
 @import "tailwindcss";
 
 @theme {
-  --color-maroon: #8B1A1A;
-  --color-maroon-dark: #6B1414;
-  --color-gold: #C8960C;
-  --color-gold-light: #F0B429;
-  --color-ivory: #FAF6EF;
-  --color-sandalwood: #3B2314;
+  --color-gold: #D4AF37;
+  --color-gold-light: #F3E5AB;
+  --color-gold-dark: #AA8C2C;
+  --color-ivory: #FCFCFA;
   --color-white: #FFFFFF;
+  --color-text-main: #2C2C2C;
+  --color-text-muted: #666666;
 
   --font-playfair: 'Playfair Display', serif;
   --font-outfit: 'Outfit', sans-serif;
@@ -25,8 +25,8 @@ html {
 
 body {
   font-family: 'Outfit', sans-serif;
-  background-color: #FAF6EF;
-  color: #3B2314;
+  background-color: #FFFFFF;
+  color: #2C2C2C;
   overflow-x: hidden;
 }
 
@@ -125,24 +125,24 @@ body {
 .navbar-glass {
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  background: rgba(139, 26, 26, 0.92);
-  border-bottom: 1px solid rgba(200, 150, 12, 0.4);
+  background: rgba(255, 255, 255, 0.92);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.2);
 }
 
 /* Section heading style */
 .section-label {
   font-family: 'Outfit', sans-serif;
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.25em;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.3em;
   text-transform: uppercase;
-  color: #C8960C;
+  color: #D4AF37;
 }
 
 .section-heading {
   font-family: 'Playfair Display', serif;
-  font-weight: 700;
-  color: #8B1A1A;
+  font-weight: 500;
+  color: #2C2C2C;
 }
 
 /* Card gradient overlay */

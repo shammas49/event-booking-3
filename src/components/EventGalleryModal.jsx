@@ -44,7 +44,7 @@ function Lightbox({ photos, startIndex, onClose }) {
         style={{
           position: 'absolute', top: 20, right: 24,
           background: 'none', border: 'none',
-          color: '#C8960C', cursor: 'pointer',
+          color: '#D4AF37', cursor: 'pointer',
         }}
       >
         <X size={34} />
@@ -59,7 +59,7 @@ function Lightbox({ photos, startIndex, onClose }) {
           background: 'rgba(200,150,12,0.18)', border: '1px solid rgba(200,150,12,0.4)',
           borderRadius: '50%', width: 48, height: 48,
           display: 'flex', alignItems: 'center', justifyContent: 'center',
-          color: '#C8960C', cursor: 'pointer', transition: 'background 0.2s',
+          color: '#D4AF37', cursor: 'pointer', transition: 'background 0.2s',
         }}
         onMouseEnter={e => e.currentTarget.style.background = 'rgba(200,150,12,0.45)'}
         onMouseLeave={e => e.currentTarget.style.background = 'rgba(200,150,12,0.18)'}
@@ -97,7 +97,7 @@ function Lightbox({ photos, startIndex, onClose }) {
           background: 'rgba(200,150,12,0.18)', border: '1px solid rgba(200,150,12,0.4)',
           borderRadius: '50%', width: 48, height: 48,
           display: 'flex', alignItems: 'center', justifyContent: 'center',
-          color: '#C8960C', cursor: 'pointer', transition: 'background 0.2s',
+          color: '#D4AF37', cursor: 'pointer', transition: 'background 0.2s',
         }}
         onMouseEnter={e => e.currentTarget.style.background = 'rgba(200,150,12,0.45)'}
         onMouseLeave={e => e.currentTarget.style.background = 'rgba(200,150,12,0.18)'}
@@ -109,7 +109,7 @@ function Lightbox({ photos, startIndex, onClose }) {
       <div style={{ marginTop: 18, textAlign: 'center' }}>
         <p style={{
           fontFamily: "'Playfair Display', serif",
-          fontSize: 15, color: '#C8960C', fontStyle: 'italic',
+          fontSize: 15, color: '#D4AF37', fontStyle: 'italic',
         }}>
           {photos[current].caption}
         </p>
@@ -135,7 +135,7 @@ function Lightbox({ photos, startIndex, onClose }) {
             style={{
               padding: 0, border: 'none', cursor: 'pointer',
               borderRadius: 6, overflow: 'hidden',
-              outline: i === current ? '2px solid #C8960C' : '2px solid transparent',
+              outline: i === current ? '2px solid #D4AF37' : '2px solid transparent',
               transition: 'outline 0.2s',
               opacity: i === current ? 1 : 0.55,
             }}
@@ -187,11 +187,11 @@ function PhotoGridItem({ photo, index, onClick }) {
         display: 'flex', flexDirection: 'column',
         alignItems: 'center', justifyContent: 'center', gap: 6,
       }}>
-        <ZoomIn size={28} color="#3B2314" />
+        <ZoomIn size={28} color="#2C2C2C" />
         <p style={{
           fontFamily: "'Outfit', sans-serif",
           fontSize: 12, fontWeight: 600,
-          color: '#3B2314', textAlign: 'center', padding: '0 8px',
+          color: '#2C2C2C', textAlign: 'center', padding: '0 8px',
         }}>
           {photo.caption}
         </p>
@@ -243,7 +243,7 @@ export default function EventGalleryModal({ event, onClose }) {
           zIndex: 9500,
           width: 'min(960px, 96vw)',
           height: 'min(720px, 92vh)',
-          background: '#FAF6EF',
+          background: '#FCFCFA',
           borderRadius: 20,
           overflow: 'hidden',
           display: 'flex',
@@ -255,7 +255,7 @@ export default function EventGalleryModal({ event, onClose }) {
       >
         {/* ── Header ── */}
         <div style={{
-          background: 'linear-gradient(135deg, #8B1A1A 0%, #6B1414 100%)',
+          background: 'linear-gradient(135deg, #2C2C2C 0%, #6B1414 100%)',
           padding: '24px 32px',
           display: 'flex', alignItems: 'center', justifyContent: 'space-between',
           flexShrink: 0,
@@ -271,7 +271,7 @@ export default function EventGalleryModal({ event, onClose }) {
           {/* Gold bottom border */}
           <div style={{
             position: 'absolute', bottom: 0, left: 0, right: 0, height: '2px',
-            background: 'linear-gradient(90deg, transparent, #C8960C, transparent)',
+            background: 'linear-gradient(90deg, transparent, #D4AF37, transparent)',
           }} />
 
           <div style={{ display: 'flex', alignItems: 'center', gap: 16, position: 'relative' }}>
@@ -280,7 +280,7 @@ export default function EventGalleryModal({ event, onClose }) {
               <p style={{
                 fontFamily: "'Outfit', sans-serif",
                 fontSize: 11, fontWeight: 600, letterSpacing: '0.22em',
-                color: '#C8960C', textTransform: 'uppercase', marginBottom: 4,
+                color: '#D4AF37', textTransform: 'uppercase', marginBottom: 4,
               }}>
                 ✦ MK Caters &amp; Events ✦
               </p>
@@ -310,7 +310,7 @@ export default function EventGalleryModal({ event, onClose }) {
               cursor: 'pointer', transition: 'all 0.2s', flexShrink: 0,
               display: 'flex', alignItems: 'center',
             }}
-            onMouseEnter={e => { e.currentTarget.style.background = 'rgba(200,150,12,0.3)'; e.currentTarget.style.color = '#C8960C' }}
+            onMouseEnter={e => { e.currentTarget.style.background = 'rgba(200,150,12,0.3)'; e.currentTarget.style.color = '#D4AF37' }}
             onMouseLeave={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.08)'; e.currentTarget.style.color = '#FFFFFF' }}
           >
             <X size={22} />
@@ -349,13 +349,13 @@ export default function EventGalleryModal({ event, onClose }) {
           <div>
             <p style={{
               fontFamily: "'Playfair Display', serif",
-              fontSize: 16, fontWeight: 700, color: '#8B1A1A',
+              fontSize: 16, fontWeight: 700, color: '#2C2C2C',
             }}>
               Interested in {event.name}?
             </p>
             <p style={{
               fontFamily: "'Outfit', sans-serif",
-              fontSize: 13, color: '#3B2314', opacity: 0.7, marginTop: 2,
+              fontSize: 13, color: '#2C2C2C', opacity: 0.7, marginTop: 2,
             }}>
               Get in touch for pricing &amp; availability
             </p>
@@ -368,9 +368,9 @@ export default function EventGalleryModal({ event, onClose }) {
             style={{
               display: 'flex', alignItems: 'center', gap: 8,
               padding: '13px 28px',
-              background: '#C8960C',
+              background: '#D4AF37',
               borderRadius: 10,
-              color: '#3B2314',
+              color: '#2C2C2C',
               fontFamily: "'Outfit', sans-serif",
               fontSize: 15, fontWeight: 700,
               textDecoration: 'none', letterSpacing: '0.04em',
@@ -379,7 +379,7 @@ export default function EventGalleryModal({ event, onClose }) {
               whiteSpace: 'nowrap',
             }}
             onMouseEnter={e => { e.currentTarget.style.background = '#F0B429'; e.currentTarget.style.transform = 'translateY(-2px)' }}
-            onMouseLeave={e => { e.currentTarget.style.background = '#C8960C'; e.currentTarget.style.transform = 'translateY(0)' }}
+            onMouseLeave={e => { e.currentTarget.style.background = '#D4AF37'; e.currentTarget.style.transform = 'translateY(0)' }}
           >
             <MessageCircle size={18} />
             Book via WhatsApp
